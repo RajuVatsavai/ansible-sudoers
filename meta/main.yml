@@ -17,6 +17,9 @@ galaxy_info:
         - squeeze
         - wheezy
         - jessie
+    - name: EL
+      versions:
+        - 7
   categories:
     - system
     - monitoring

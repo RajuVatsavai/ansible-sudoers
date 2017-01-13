@@ -1,12 +1,19 @@
 # tasks file for sudoers
 ---
-- name: install
+- name: install sudo on Ubuntu
   apt:
     name: sudo
     state: latest
     update_cache: true
     cache_valid_time: "{{ apt_update_cache_valid_time | default(3600) }}"
+  when: ansible_os_family == 'Debian'
   tags: [configuration, sudoers, sudoers-install]
+
+- name: install sudo on Linux
+  yum:
+    name: sudo
+    state: latest
+  when: ansible_os_family == 'RedHat'
 
 - name: update specific configuration files
   template:
